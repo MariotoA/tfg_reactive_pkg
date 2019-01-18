@@ -1,0 +1,36 @@
+<!-- Launch file principal para lanzar una simulación con Stage + MoveBse -->
+
+<launch>    
+
+    ### ROBOT SIMULATION ###
+    <param name="use_sim_time" value="true" />
+    <include file="$(find tfg_reactive_pkg)/launch/simbot_stage.launch" >
+        <arg name="world_file" value="-d $(find tfg_reactive_pkg)/maps/MAPIRlab_furniture.world" />
+        <arg name="disable_odometry" value="false" />
+    </include> 
+     
+    <include file="$(find tfg_reactive_pkg)/launch/proc_depth_image.launch" />
+       
+    ### URDF model "r2d2" ###
+    <include file="$(find tfg_reactive_pkg)/launch/simbot_urdf.launch" />
+    
+    
+    ### NAVIGATION ###
+    <include file="$(find tfg_reactive_pkg)/launch/simbot_map_server.launch">
+        <arg name="map_file" value="$(find tfg_reactive_pkg)/maps/MAPIRlab_furniture.yaml" />
+    </include>
+    <include file="$(find tfg_reactive_pkg)/launch/simbot_move_base.launch">
+	  <arg name="local_planner_plugin" value="base_local_planner/TrajectoryPlannerROS"/>
+	  <arg name="costmap_global_params" value="$(find tfg_reactive_pkg)/move_base_conf/tr/simbot_costmap_global_params.yaml"/>
+	  <arg name="costmap_local_params" value="$(find tfg_reactive_pkg)/move_base_conf/tr/simbot_costmap_local_params.yaml"/>
+	  <arg name="costmap_common_params" value="$(find tfg_reactive_pkg)/move_base_conf/tr/simbot_costmap_common_params.yaml"/>
+	  <arg name="global_planner_params" value="$(find tfg_reactive_pkg)/move_base_conf/tr/simbot_global_planner_params.yaml"/>
+	  <arg name="local_planner_params" value="$(find tfg_reactive_pkg)/move_base_conf/tr/simbot_local_planner_params.yaml"/>	
+	</include>
+    <include file="$(find tfg_reactive_pkg)/launch/simbot_fake_loc.launch" />
+  
+    
+    ### RVIZ ###
+    <node name="rviz_player" pkg="rviz" type="rviz" args="-d $(find tfg_reactive_pkg)/rviz/simbot_reactive_tr.rviz"/>
+
+</launch>

@@ -10,13 +10,13 @@
   <node pkg="move_base" type="move_base" respawn="false" name="move_base" launch-prefix="$(arg launch_prefix)">
   
     ## Planners
-    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/simbot_global_planner_params.yaml" command="load" />
+    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/dwa/simbot_global_planner_params.yaml" command="load" />
     
     ## Costmaps
-    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/simbot_costmap_global_params.yaml" command="load" />
-    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/simbot_costmap_common_params.yaml" command="load" />    
-    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/simbot_costmap_common_params.yaml" command="load" ns="global_costmap" />
-    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/simbot_costmap_common_params.yaml" command="load" ns="global_costmap/obstacles" />
+    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/dwa/simbot_costmap_global_params.yaml" command="load" />
+    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/dwa/simbot_costmap_common_params.yaml" command="load" />    
+    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/dwa/simbot_costmap_common_params.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find tfg_reactive_pkg)/move_base_conf/dwa/simbot_costmap_common_params.yaml" command="load" ns="global_costmap/obstacles" />
     <param name="base_global_planner" value="$(arg global_planner_plugin)"/>
 
   </node>

@@ -7,8 +7,9 @@
     <include file="$(find tfg_reactive_pkg)/launch/simbot_stage.launch" >
         <arg name="world_file" value="-d $(find tfg_reactive_pkg)/maps/MAPIRlab_furniture.world" />
         <arg name="disable_odometry" value="false" />
-    </include>      
-    
+    </include> 
+     
+    <include file="$(find tfg_reactive_pkg)/launch/proc_depth_image.launch" />
        
     ### URDF model "r2d2" ###
     <include file="$(find tfg_reactive_pkg)/launch/simbot_urdf.launch" />
@@ -23,6 +24,6 @@
   
     
     ### RVIZ ###
-    <node name="rviz_player" pkg="rviz" type="rviz" args="-d $(find tfg_reactive_pkg)/rviz/simbot_reactive.rviz"/>
+    <node name="rviz_player" pkg="rviz" type="rviz" args="-d $(find tfg_reactive_pkg)/rviz/simbot_reactive_dwa.rviz"/>
 
 </launch>

@@ -1,0 +1,29 @@
+<!-- Launch file principal para lanzar una simulación con Stage + MoveBse -->
+<launch>
+
+  <!--
+  To distinguish between the cases where the rgb image is
+  1280x1024 versus 640x480.  This affects the pipeline.
+  -->
+  <!-- Nodelet manager for this pipeline -->
+  <node pkg="nodelet" type="nodelet" args="manager"
+        name="record_player_manager" output="screen"/>
+
+  <!-- Debayer and undistort the rgb image
+       TODO: this should be split into nodelets -->
+
+
+
+  <!-- Convert it into a point cloud -->
+  <node pkg="nodelet" type="nodelet" name="cloudify"
+        args="load depth_image_proc/point_cloud_xyz record_player_manager --no-bond">
+    <remap from="image_rect" to="/depth"/>
+  </node>
+
+  <!--node pkg="nodelet" type="nodelet" name="cloudify"
+        args="load depth_image_proc/point_cloud_xyzrgb record_player_manager no-bond">
+    <remap from="depth_registered/image_rect" to="/depth"/>
+    <remap from="rgb/image_rect_color" to="/image"/>
+    <remap from="rgb/camera_info" to="/camera_info"/>
+  </node> -->
+</launch>
