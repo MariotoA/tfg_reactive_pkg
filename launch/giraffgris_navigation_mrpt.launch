@@ -1,0 +1,39 @@
+<!-- Launch file principal para lanzar una simulación con Stage + MoveBse -->
+
+<launch>    
+
+    ### ROBOT SIMULATION ###
+    <param name="use_sim_time" value="false" />
+         <arg name="user_id" value="ict-john" />                # User ID
+  
+  
+  #-----------------------------------------------------------------------------------------#
+  #                                HW DRIVERS and TF                                        #
+  #-----------------------------------------------------------------------------------------#
+  ### URDF model "giraff_robot" ###
+  <include file="$(find missions_pkg)/launch/movecare/movecare_urdf.launch" />
+  
+  # Giraff based driver
+  <include file="$(find missions_pkg)/launch/movecare/movecare_giraff_ros_driver.launch" />
+  # Hokuyo
+  <include file="$(find missions_pkg)/launch/movecare/movecare_hokuyo.launch" />
+  # Fish-eye cam
+  <include file="$(find missions_pkg)/launch/movecare/movecare_usb_camera.launch" />
+
+  #-----------------------------------------------------------------------------------------#
+  #                                     NAVIGATION                                          #
+  #-----------------------------------------------------------------------------------------#
+  <!--<include file="$(find missions_pkg)/launch/movecare/movecare_move_base.launch" >
+    <arg name="global_planner_plugin" value="navfn/NavfnROS"/>
+	<arg name="local_planner_plugin" value="dwa_local_planner/DWAPlannerROS"/>
+  </include>-->
+  <include file="$(find missions_pkg)/launch/movecare/movecare_map_server.launch" >
+    <arg name="map_file" value="$(find tfg_reactive_pkg)/maps/movecare_map.yaml" />
+  </include>
+  <include file="$(find missions_pkg)/launch/movecare/movecare_amcl_diff.launch" />
+  <include file="$(find missions_pkg)/launch/movecare/movecare_rf2o_laser_odometry.launch" />
+  <include file="$(find missions_pkg)/launch/movecare/movecare_keyboard_control.launch" />
+   
+  <include file="$(find mrpt_reactivenav)/launch/test_simbot_navigation3D_cloud.launch" />
+	
+</launch>

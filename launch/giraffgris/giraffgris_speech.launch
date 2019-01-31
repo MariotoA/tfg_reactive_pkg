@@ -1,0 +1,10 @@
+<!-- 
+  Launch file for the Speech TTS node
+  This module launches the Google Chrome Speech Script (GCSS) and provides a service for the robot to speak
+-->
+<launch> 
+  <node pkg="speech" type="speech_node" name="speech" respawn="false" output="screen">
+        <param name="mqtt_topic" value="TTS"/>
+	<param name="script_id" value="gcfnecbmoamdbkommkbdmnjcepmadiom"/> <!-- ID of the GCSS taken from chrome://extensions/ -> ID -->
+  </node>
+</launch>

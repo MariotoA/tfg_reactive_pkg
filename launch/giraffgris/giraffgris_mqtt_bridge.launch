@@ -1,0 +1,14 @@
+<!-- 
+  Launch file for the MQTT mosquitto bridge 
+  The module connects a MQTT broker with ROS
+-->
+<launch> 
+  <node pkg="mqtt_bridge" type="mqtt_bridge_node" name="mqtt_bridge" respawn="false" output="screen">
+    <param name="host" value="150.214.109.137"/>    ### server IP
+    <param name="port" value="8002"/>               ### server port
+    <param name="username" value="curro"/>
+    <param name="password" value="mapir236"/>
+    <param name="MQTT_topicName" value="UMA_Giraff_7"/>   <!--UMA_Giraff_Gris--> 
+    <param name="MQTT_topics_subscribe" value= "NavigationCommand,TopologyCommand,ClientACK,ServerACK,Speak" />
+  </node>
+</launch>

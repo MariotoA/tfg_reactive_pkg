@@ -1,0 +1,15 @@
+<!-- 
+  This node controls the API for the MAPIR robots "IOT"
+-->
+
+<launch>
+  <arg name="launch_prefix" default="" />
+
+  <node pkg="mapir_iot_api" type="mapir_iot_api_node" name="mapir_iot_api" launch-prefix="$(arg launch_prefix)" output="screen">
+    <param name="input_topic" value="/mqtt2ros"/>
+    <param name="output_topic" value="/ros2mqtt" />
+    <param name="ACKRate" value="10" />
+    <param name="statusRate" value="5"/>
+    <param name="battery_topic" value="/giraff_battery" />
+  </node>
+</launch>

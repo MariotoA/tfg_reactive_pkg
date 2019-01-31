@@ -1,0 +1,8 @@
+########################################################################
+# Global parameters for the COSTMAP_2D pkg (navigation stack)
+########################################################################
+global_costmap:
+  global_frame: /map
+  robot_base_frame: /base_link
+  update_frequency: 5.0
+  static_map: true
