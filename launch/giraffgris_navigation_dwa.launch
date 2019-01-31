@@ -33,7 +33,6 @@
   <include file="$(find missions_pkg)/launch/movecare/movecare_amcl_diff.launch" />
   <include file="$(find missions_pkg)/launch/movecare/movecare_rf2o_laser_odometry.launch" />
   <include file="$(find missions_pkg)/launch/movecare/movecare_keyboard_control.launch" />
-   
-    <include file="$(find tfg_reactive_pkg)/launch/simbot_move_base.launch" />
+  <include file="$(find tfg_reactive_pkg)/launch/simbot_move_base.launch" />
 	
 </launch>
